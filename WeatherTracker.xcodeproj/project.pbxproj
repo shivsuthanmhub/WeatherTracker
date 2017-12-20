@@ -14,6 +14,7 @@
 		430E97101FEAAB1300EBF566 /* Screen_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 430E970A1FEAAB1200EBF566 /* Screen_1.png */; };
 		430E97111FEAAB1300EBF566 /* Launch_Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 430E970B1FEAAB1200EBF566 /* Launch_Screen.png */; };
 		430E97121FEAAB1300EBF566 /* Simulator_Test.png in Resources */ = {isa = PBXBuildFile; fileRef = 430E970C1FEAAB1200EBF566 /* Simulator_Test.png */; };
+		430E97141FEAAC1F00EBF566 /* Screen_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 430E97131FEAAC1F00EBF566 /* Screen_3.png */; };
 		43154C6D1FE51BF4009FEFB0 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43154C6E1FE51BF4009FEFB0 /* MBProgressHUD.framework */; };
 		433BA41E1FE2BCBB00986088 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433BA41D1FE2BCBB00986088 /* AppDelegate.swift */; };
 		433BA4261FE2BCBB00986088 /* WeatherTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 433BA4241FE2BCBB00986088 /* WeatherTracker.xcdatamodeld */; };
@@ -78,6 +79,7 @@
 		430E970A1FEAAB1200EBF566 /* Screen_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen_1.png; sourceTree = "<group>"; };
 		430E970B1FEAAB1200EBF566 /* Launch_Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Launch_Screen.png; sourceTree = "<group>"; };
 		430E970C1FEAAB1200EBF566 /* Simulator_Test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Simulator_Test.png; sourceTree = "<group>"; };
+		430E97131FEAAC1F00EBF566 /* Screen_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen_3.png; sourceTree = "<group>"; };
 		43154C6E1FE51BF4009FEFB0 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		433BA41A1FE2BCBB00986088 /* WeatherTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		433BA41D1FE2BCBB00986088 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				430E97071FEAAB1200EBF566 /* Screen_4.png */,
 				430E97081FEAAB1200EBF566 /* Screen_5.png */,
 				430E97091FEAAB1200EBF566 /* Screen_2.png */,
+				430E97131FEAAC1F00EBF566 /* Screen_3.png */,
 				430E970A1FEAAB1200EBF566 /* Screen_1.png */,
 				430E970B1FEAAB1200EBF566 /* Launch_Screen.png */,
 				430E970C1FEAAB1200EBF566 /* Simulator_Test.png */,
@@ -468,6 +471,7 @@
 				43E915BF1FEA379F000D0087 /* LaunchScreen.storyboard in Resources */,
 				435014791FE715BE00335096 /* 50d.png in Resources */,
 				4350146E1FE6D65500335096 /* 13d.png in Resources */,
+				430E97141FEAAC1F00EBF566 /* Screen_3.png in Resources */,
 				430E970F1FEAAB1300EBF566 /* Screen_2.png in Resources */,
 				4350146C1FE6D65500335096 /* 09d.png in Resources */,
 				435014751FE6D65500335096 /* 01n.png in Resources */,
