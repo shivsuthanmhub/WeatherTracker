@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		3D1E0AB9196EAD5A9BF3B3C5 /* Pods_WeatherTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA216E31BFEDBE81408B3790 /* Pods_WeatherTracker.framework */; };
+		430E970D1FEAAB1200EBF566 /* Screen_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 430E97071FEAAB1200EBF566 /* Screen_4.png */; };
+		430E970E1FEAAB1300EBF566 /* Screen_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 430E97081FEAAB1200EBF566 /* Screen_5.png */; };
+		430E970F1FEAAB1300EBF566 /* Screen_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 430E97091FEAAB1200EBF566 /* Screen_2.png */; };
+		430E97101FEAAB1300EBF566 /* Screen_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 430E970A1FEAAB1200EBF566 /* Screen_1.png */; };
+		430E97111FEAAB1300EBF566 /* Launch_Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 430E970B1FEAAB1200EBF566 /* Launch_Screen.png */; };
+		430E97121FEAAB1300EBF566 /* Simulator_Test.png in Resources */ = {isa = PBXBuildFile; fileRef = 430E970C1FEAAB1200EBF566 /* Simulator_Test.png */; };
 		43154C6D1FE51BF4009FEFB0 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43154C6E1FE51BF4009FEFB0 /* MBProgressHUD.framework */; };
 		433BA41E1FE2BCBB00986088 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433BA41D1FE2BCBB00986088 /* AppDelegate.swift */; };
 		433BA4261FE2BCBB00986088 /* WeatherTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 433BA4241FE2BCBB00986088 /* WeatherTracker.xcdatamodeld */; };
@@ -66,6 +72,12 @@
 /* Begin PBXFileReference section */
 		16A2F84D6D654B9BAF96C1A2 /* Pods-WeatherTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTrackerTests/Pods-WeatherTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		41067F9AD89462775DF4507E /* Pods-WeatherTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTracker/Pods-WeatherTracker.release.xcconfig"; sourceTree = "<group>"; };
+		430E97071FEAAB1200EBF566 /* Screen_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen_4.png; sourceTree = "<group>"; };
+		430E97081FEAAB1200EBF566 /* Screen_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen_5.png; sourceTree = "<group>"; };
+		430E97091FEAAB1200EBF566 /* Screen_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen_2.png; sourceTree = "<group>"; };
+		430E970A1FEAAB1200EBF566 /* Screen_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen_1.png; sourceTree = "<group>"; };
+		430E970B1FEAAB1200EBF566 /* Launch_Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Launch_Screen.png; sourceTree = "<group>"; };
+		430E970C1FEAAB1200EBF566 /* Simulator_Test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Simulator_Test.png; sourceTree = "<group>"; };
 		43154C6E1FE51BF4009FEFB0 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		433BA41A1FE2BCBB00986088 /* WeatherTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		433BA41D1FE2BCBB00986088 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +169,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		430E97061FEAAB1200EBF566 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				430E97071FEAAB1200EBF566 /* Screen_4.png */,
+				430E97081FEAAB1200EBF566 /* Screen_5.png */,
+				430E97091FEAAB1200EBF566 /* Screen_2.png */,
+				430E970A1FEAAB1200EBF566 /* Screen_1.png */,
+				430E970B1FEAAB1200EBF566 /* Launch_Screen.png */,
+				430E970C1FEAAB1200EBF566 /* Simulator_Test.png */,
+			);
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
 		433BA4111FE2BCBB00986088 = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +215,7 @@
 				43E915B51FEA34AA000D0087 /* TableViewCells */,
 				433BA4521FE2BFEC00986088 /* Assets */,
 				43E915BA1FEA379F000D0087 /* Storyboard */,
+				430E97061FEAAB1200EBF566 /* Screenshots */,
 				433BA4271FE2BCBB00986088 /* Assets.xcassets */,
 				433BA42C1FE2BCBB00986088 /* Info.plist */,
 				433BA4241FE2BCBB00986088 /* WeatherTracker.xcdatamodeld */,
@@ -431,6 +457,8 @@
 				4350146B1FE6D65500335096 /* 04n.png in Resources */,
 				4350146D1FE6D65500335096 /* 13n.png in Resources */,
 				43E915C01FEA379F000D0087 /* Main.storyboard in Resources */,
+				430E970D1FEAAB1200EBF566 /* Screen_4.png in Resources */,
+				430E970E1FEAAB1300EBF566 /* Screen_5.png in Resources */,
 				435014741FE6D65500335096 /* 09n.png in Resources */,
 				433BA4281FE2BCBB00986088 /* Assets.xcassets in Resources */,
 				4350146A1FE6D65500335096 /* 04d.png in Resources */,
@@ -440,13 +468,17 @@
 				43E915BF1FEA379F000D0087 /* LaunchScreen.storyboard in Resources */,
 				435014791FE715BE00335096 /* 50d.png in Resources */,
 				4350146E1FE6D65500335096 /* 13d.png in Resources */,
+				430E970F1FEAAB1300EBF566 /* Screen_2.png in Resources */,
 				4350146C1FE6D65500335096 /* 09d.png in Resources */,
 				435014751FE6D65500335096 /* 01n.png in Resources */,
+				430E97121FEAAB1300EBF566 /* Simulator_Test.png in Resources */,
 				435014711FE6D65500335096 /* 02n.png in Resources */,
+				430E97111FEAAB1300EBF566 /* Launch_Screen.png in Resources */,
 				435014781FE715BE00335096 /* 50n.png in Resources */,
 				435014811FE71D7700335096 /* location.png in Resources */,
 				4350147F1FE718E600335096 /* more2.png in Resources */,
 				435014731FE6D65500335096 /* 10n.png in Resources */,
+				430E97101FEAAB1300EBF566 /* Screen_1.png in Resources */,
 				435014681FE6D65500335096 /* 01d.png in Resources */,
 				435014691FE6D65500335096 /* 03n.png in Resources */,
 				4350146F1FE6D65500335096 /* 03d.png in Resources */,
