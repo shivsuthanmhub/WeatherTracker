@@ -10,7 +10,7 @@ Developement Environment:
 
 Xcode Version 9.1
 macOS High Sierra
-Swift
+and Swift
 
 How to run this application ?
 
