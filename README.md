@@ -4,7 +4,7 @@ WeatherTracker is an application that detects user current location and provides
 
 This application uses OpenWeatherMap API to fetch the weather forecast records of perticular location.
 
-This application handled fetching current user location using location manager, auto layout, and more apple native Swift coding standards.
+This application handled fetching current user location using location manager, auto layout, apple native Swift coding standards and mvvm pattern.
 
 Developement Environment:
 
