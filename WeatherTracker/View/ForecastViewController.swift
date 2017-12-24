@@ -14,6 +14,7 @@ import MBProgressHUD
 class ForecastViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     
     public var locationManager:CLLocationManager!
+    var startLocation: CLLocation!
     public var hud:MBProgressHUD!
     
     @IBOutlet weak var weatherImg: UIImageView!
@@ -179,6 +180,7 @@ class ForecastViewController: UIViewController, UITableViewDataSource, UITableVi
         locationManager.requestAlwaysAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
+            startLocation = nil
             locationManager.startUpdatingLocation()
         }
     }
@@ -191,6 +193,11 @@ class ForecastViewController: UIViewController, UITableViewDataSource, UITableVi
         self.forecastViewModel.getWeatherWithCoordinates(lat:Double(userLocation.coordinate.latitude), lon: Double (userLocation.coordinate.longitude))
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI(_notification:)), name: NSNotification.Name(rawValue: "weatherDataNotified"), object: nil)
+        
+        if startLocation == nil {
+            startLocation = userLocation
+            locationManager.stopUpdatingLocation()
+        }
         
     }
     
