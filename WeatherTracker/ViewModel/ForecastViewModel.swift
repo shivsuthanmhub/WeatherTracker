@@ -70,6 +70,27 @@ class ForecastViewModel:NSObject  {
     }
 }
 
+extension ForecastViewModel: UITableViewDataSource {
+    
+    // Forecast Table Process
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self._forecastModelList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ForecastCell.reuseIdentifier, for: indexPath) as? ForecastCell else { fatalError("Unexpected Table View Cell") }
+        
+        let weatherForecastData = self._forecastModelList[indexPath.row]
+        
+        //Did set cell
+        cell.cellModel = weatherForecastData
+        
+        return cell
+    }
+    
+}
+
 extension ForecastViewModel {
     
     //Get Five days forecast data
