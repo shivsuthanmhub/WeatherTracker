@@ -36,30 +36,12 @@ class ForecastViewController: UIViewController {
     
     private func initialSetup() {
         // Hide Five days Forecast table initially
-        self.forecastTbl.isHidden = true
+        self.forecastTbl?.isHidden = true
+        // Set Datasource
+        self.forecastTbl?.dataSource = forecastViewModel
         
         // Trigger Notification
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI(_notification:)), name: NSNotification.Name(rawValue: "weatherDataNotified"), object: nil)
-    }
-}
-
-extension ForecastViewController: UITableViewDataSource {
-    
-    // Forecast Table Process
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.forecastViewModelList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ForecastCell.reuseIdentifier, for: indexPath) as? ForecastCell else { fatalError("Unexpected Table View Cell") }
-        
-        let weatherForecastData = self.forecastViewModelList[indexPath.row]
-        
-        //Did set cell
-        cell.cellModel = weatherForecastData
-        
-        return cell
     }
 }
 
@@ -68,7 +50,7 @@ extension ForecastViewController {
     @IBAction func tapToChangeLocation(_ sender: Any) {
         
         // Hide Five days Forecast table while location change
-        self.forecastTbl.isHidden = true
+        self.forecastTbl?.isHidden = true
         
         // Show alert popup for enter location name to process
         let alertController = UIAlertController(title: "Change Location", message: "Please input your city:", preferredStyle: .alert)
@@ -125,7 +107,7 @@ extension ForecastViewController {
             self.forecastViewModel.getFiveDaysForecastData(city: self.forecastViewModel.WeatherDetails.location).then
                 { model -> Void in
                     DispatchQueue.main.async {
-                        self.forecastTbl.isHidden = false
+                        self.forecastTbl?.isHidden = false
                         self.forecastViewModelList = model
                         UIView.transition(with: self.forecastTbl, duration: 1.0, options: .transitionCrossDissolve, animations: {self.forecastTbl.reloadData()}, completion: nil)
                     }
