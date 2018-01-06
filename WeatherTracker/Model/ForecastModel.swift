@@ -10,6 +10,8 @@ import UIKit
 
 class ForecastModel {
     
+    // Model Properties of ForecastModel
+    
     private var _date: String?
     private var _temp: String?
     private var _location: String?
@@ -50,7 +52,7 @@ class ForecastModel {
             
         }
         get{
-            return _location ?? "Location Invalid"
+            return _location ?? "Location"
             
         }
         
@@ -60,7 +62,7 @@ class ForecastModel {
     {
         get
         {
-            return _weather ?? "Weather Invalid"
+            return _weather ?? "Weather"
         }
         set
         {
@@ -73,7 +75,7 @@ class ForecastModel {
     {
         get
         {
-            return _weatherIcon ?? "Icon Invalid"
+            return _weatherIcon ?? "Icon"
         }
         set
         {
@@ -86,7 +88,7 @@ class ForecastModel {
     {
         get
         {
-            return _time ?? "Time Invalid"
+            return _time ?? "Time"
         }
         set
         {

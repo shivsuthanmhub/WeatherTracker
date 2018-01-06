@@ -8,6 +8,8 @@ target 'WeatherTracker' do
     # Pods for WeatherTracker
     
     pod 'MBProgressHUD', '~> 1.1.0'
+    pod 'PromiseKit', '~> 4.4'
+    pod 'PromiseKit/CoreLocation'
     
     target 'WeatherTrackerTests' do
         inherit! :search_paths

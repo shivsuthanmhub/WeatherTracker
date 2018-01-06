@@ -8,6 +8,7 @@
 
 import Foundation
 
+// API Configuration
 struct BaseURL {
     
     static let openWeatherMapBaseURL = "http://api.openweathermap.org/data/2.5/weather"

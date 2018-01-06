@@ -42,6 +42,9 @@
 		4350147E1FE718E600335096 /* more1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4350147B1FE718E600335096 /* more1.png */; };
 		4350147F1FE718E600335096 /* more2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4350147C1FE718E600335096 /* more2.png */; };
 		435014811FE71D7700335096 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 435014801FE71D7700335096 /* location.png */; };
+		439DA3021FFD06B400BA9827 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 439DA3031FFD06B400BA9827 /* PromiseKit.framework */; };
+		43B3F9941FFE8DCA005CE36F /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B3F9931FFE8DCA005CE36F /* LocationHelper.swift */; };
+		43B3F9961FFEBBAE005CE36F /* ProgressHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B3F9951FFEBBAE005CE36F /* ProgressHelper.swift */; };
 		43E915B41FEA2FB1000D0087 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E915B31FEA2FB1000D0087 /* Configuration.swift */; };
 		43E915B71FEA34AA000D0087 /* ForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E915B61FEA34AA000D0087 /* ForecastCell.swift */; };
 		43E915B91FEA3776000D0087 /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E915B81FEA3775000D0087 /* ForecastViewController.swift */; };
@@ -113,6 +116,10 @@
 		4350147B1FE718E600335096 /* more1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more1.png; sourceTree = "<group>"; };
 		4350147C1FE718E600335096 /* more2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more2.png; sourceTree = "<group>"; };
 		435014801FE71D7700335096 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
+		439DA3031FFD06B400BA9827 /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		43B3F9931FFE8DCA005CE36F /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
+		43B3F9951FFEBBAE005CE36F /* ProgressHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHelper.swift; sourceTree = "<group>"; };
+		43B3F9981FFF4DB2005CE36F /* JGProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = JGProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43E915B31FEA2FB1000D0087 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		43E915B61FEA34AA000D0087 /* ForecastCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastCell.swift; sourceTree = "<group>"; };
 		43E915B81FEA3775000D0087 /* ForecastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				439DA3021FFD06B400BA9827 /* PromiseKit.framework in Frameworks */,
 				43154C6D1FE51BF4009FEFB0 /* MBProgressHUD.framework in Frameworks */,
 				3D1E0AB9196EAD5A9BF3B3C5 /* Pods_WeatherTracker.framework in Frameworks */,
 			);
@@ -212,10 +220,10 @@
 			children = (
 				433BA4511FE2BD1300986088 /* AppDelegate */,
 				43E915B21FEA2F8C000D0087 /* Configuration */,
+				43B3F9921FFE8B50005CE36F /* HelperClasses */,
 				433BA4501FE2BCF100986088 /* Model */,
 				433BA44E1FE2BCF100986088 /* View */,
 				433BA44F1FE2BCF100986088 /* ViewModel */,
-				43E915B51FEA34AA000D0087 /* TableViewCells */,
 				433BA4521FE2BFEC00986088 /* Assets */,
 				43E915BA1FEA379F000D0087 /* Storyboard */,
 				430E97061FEAAB1200EBF566 /* Screenshots */,
@@ -248,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				43E915B81FEA3775000D0087 /* ForecastViewController.swift */,
+				43E915B61FEA34AA000D0087 /* ForecastCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -304,20 +313,21 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		43B3F9921FFE8B50005CE36F /* HelperClasses */ = {
+			isa = PBXGroup;
+			children = (
+				43B3F9931FFE8DCA005CE36F /* LocationHelper.swift */,
+				43B3F9951FFEBBAE005CE36F /* ProgressHelper.swift */,
+			);
+			path = HelperClasses;
+			sourceTree = "<group>";
+		};
 		43E915B21FEA2F8C000D0087 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
 				43E915B31FEA2FB1000D0087 /* Configuration.swift */,
 			);
 			path = Configuration;
-			sourceTree = "<group>";
-		};
-		43E915B51FEA34AA000D0087 /* TableViewCells */ = {
-			isa = PBXGroup;
-			children = (
-				43E915B61FEA34AA000D0087 /* ForecastCell.swift */,
-			);
-			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 		43E915BA1FEA379F000D0087 /* Storyboard */ = {
@@ -332,6 +342,8 @@
 		90D3A5EA2758326BDE89C334 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				43B3F9981FFF4DB2005CE36F /* JGProgressHUD.framework */,
+				439DA3031FFD06B400BA9827 /* PromiseKit.framework */,
 				43154C6E1FE51BF4009FEFB0 /* MBProgressHUD.framework */,
 				CA216E31BFEDBE81408B3790 /* Pods_WeatherTracker.framework */,
 				C3FC298703A15940E3E79A49 /* Pods_WeatherTrackerTests.framework */,
@@ -629,10 +641,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WeatherTracker/Pods-WeatherTracker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -661,9 +675,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43B3F9941FFE8DCA005CE36F /* LocationHelper.swift in Sources */,
 				433BA4261FE2BCBB00986088 /* WeatherTracker.xcdatamodeld in Sources */,
 				43E915B91FEA3776000D0087 /* ForecastViewController.swift in Sources */,
 				43E915B41FEA2FB1000D0087 /* Configuration.swift in Sources */,
+				43B3F9961FFEBBAE005CE36F /* ProgressHelper.swift in Sources */,
 				43F368A61FE3DC0100D36787 /* ForecastModel.swift in Sources */,
 				43E915B71FEA34AA000D0087 /* ForecastCell.swift in Sources */,
 				433BA41E1FE2BCBB00986088 /* AppDelegate.swift in Sources */,
@@ -837,7 +853,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S6PHLQR265;
 				INFOPLIST_FILE = WeatherTracker/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wipro.WeatherTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -854,7 +870,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S6PHLQR265;
 				INFOPLIST_FILE = WeatherTracker/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wipro.WeatherTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";

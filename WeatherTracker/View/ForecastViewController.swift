@@ -8,14 +8,10 @@
 
 import UIKit
 import Foundation
-import CoreLocation
-import MBProgressHUD
 
-class ForecastViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
+class ForecastViewController: UIViewController {
     
-    public var locationManager:CLLocationManager!
-    var startLocation: CLLocation!
-    public var hud:MBProgressHUD!
+    // UI Properties of Controller
     
     @IBOutlet weak var weatherImg: UIImageView!
     @IBOutlet weak var weatherLocation: UILabel!
@@ -26,128 +22,30 @@ class ForecastViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var tapToGetMoreForecastData: UIButton!
     @IBOutlet weak var forecastTbl: UITableView!
     
+    // Instances of Models
+    
     public var forecastViewModel = ForecastViewModel()
     public var forecastViewModelList = [ForecastModel]()
     
-    @objc func showFetchLocationLoadingHUD() {
-        self.hideUIControls()
-        self.hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        hud.label.text = "Loading"
-    }
-    
-    @objc func hideFetchLocationLoadingHUD() {
-        self.showUIControls()
-        MBProgressHUD.hide(for: self.view, animated: true)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        determineMyCurrentLocation()
-    }
-    
-    func hideUIControls()  {
-        self.weatherImg.isHidden = true
-        self.weatherLocation.isHidden = true
-        self.weatherDesc.isHidden = true
-        self.weatherRate.isHidden = true
-        self.weatherDate.isHidden = true
-        self.tapToChangeLocation.isHidden = true
-        self.tapToGetMoreForecastData.isHidden = true
-        self.forecastTbl.isHidden = true
-    }
-    
-    func showUIControls() {
-        self.weatherImg.isHidden = false
-        self.weatherLocation.isHidden = false
-        self.weatherDesc.isHidden = false
-        self.weatherRate.isHidden = false
-        self.weatherDate.isHidden = false
-        self.tapToChangeLocation.isHidden = false
-        self.tapToGetMoreForecastData.isHidden = false
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
-        self.hideUIControls()
-        self.forecastTbl.dataSource = self
-        self.forecastTbl.delegate = self
-        
+        self.initialSetup()
     }
     
-    @IBAction func tapToChangeLocation(_ sender: Any) {
+    private func initialSetup() {
+        // Hide Five days Forecast table initially
+        self.forecastTbl.isHidden = true
         
-        let alertController = UIAlertController(title: "Change Location", message: "Please input your city:", preferredStyle: .alert)
-        
-        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
-            if let field = alertController.textFields?[0] {
-                
-                self.showFetchLocationLoadingHUD()
-                
-                self.forecastViewModel.getWeather(city: field.text!)
-                
-                NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI(_notification:)), name: NSNotification.Name(rawValue: "HideLoader"), object: nil)
-                
-                NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI(_notification:)), name: NSNotification.Name(rawValue: "weatherDataNotified"), object: nil)
-                
-            }
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
-        
-        alertController.addTextField { (textField) in
-            textField.placeholder = "City"
-        }
-        
-        alertController.addAction(confirmAction)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true)
+        // Trigger Notification
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI(_notification:)), name: NSNotification.Name(rawValue: "weatherDataNotified"), object: nil)
     }
-    
-    @IBAction func tapToGetMoreForecastData(_ sender: Any) {
-        
-        let alert = UIAlertController(title: "Alert", message: "Do you want to fetch five days weather data?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-            
-            self.showFetchLocationLoadingHUD()
-            self.forecastViewModel.getFiveDaysForecastData(city: self.forecastViewModel.WeatherDetails.location)
-            
-            NotificationCenter.default.addObserver(self, selector: #selector(self.updateForecastUI(_notification:)), name: NSNotification.Name(rawValue: "weatherForecastDataNotified"), object: nil)
-            
-        }))
-        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-        self.present(alert, animated: true)
-    }
-    
-    @objc func updateUI(_notification: NSNotification) {
-        DispatchQueue.main.async {
-            
-            self.hideFetchLocationLoadingHUD()
-            self.showUIControls()
-            
-            self.weatherLocation.text = self.forecastViewModel.WeatherDetails.location
-            self.weatherRate.text = self.forecastViewModel.WeatherDetails.temp
-            self.weatherDesc.text = self.forecastViewModel.WeatherDetails.weather
-            self.weatherDate.text = self.forecastViewModel.WeatherDetails.date
-            self.weatherImg.image = UIImage(named: self.forecastViewModel.WeatherDetails.weatherIcon)
-        }
-    }
-    
-    @objc func updateForecastUI(_notification: NSNotification) {
-        DispatchQueue.main.async {
-            
-            self.hideFetchLocationLoadingHUD()
-            self.forecastTbl.isHidden = false
-            
-            self.forecastViewModelList = self.forecastViewModel.WeatherDetailsFiveDaysList            
-            UIView.transition(with: self.forecastTbl, duration: 1.0, options: .transitionCrossDissolve, animations: {self.forecastTbl.reloadData()}, completion: nil)
+}
 
-        }
-    }
+extension ForecastViewController: UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+    // Forecast Table Process
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.forecastViewModelList.count
@@ -158,54 +56,109 @@ class ForecastViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let weatherForecastData = self.forecastViewModelList[indexPath.row]
         
-        cell.weatherLbl?.text = weatherForecastData.weather
-        cell.dateLbl?.text = weatherForecastData.date
-        cell.tempLbl?.text = weatherForecastData.temp
-        cell.locationLbl?.text = weatherForecastData.location
-        cell.weatherImgView.image = UIImage(named: weatherForecastData.weatherIcon)
-        cell.timeLbl?.text = weatherForecastData.time
+        //Did set cell
+        cell.cellModel = weatherForecastData
         
         return cell
     }
+}
+
+extension ForecastViewController {
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func determineMyCurrentLocation() {
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
+    @IBAction func tapToChangeLocation(_ sender: Any) {
         
-        if CLLocationManager.locationServicesEnabled() {
-            startLocation = nil
-            locationManager.startUpdatingLocation()
+        // Hide Five days Forecast table while location change
+        self.forecastTbl.isHidden = true
+        
+        // Show alert popup for enter location name to process
+        let alertController = UIAlertController(title: "Change Location", message: "Please input your city:", preferredStyle: .alert)
+        
+        // Popup confirmation
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+            if let field = alertController.textFields?[0] {
+                
+                // Show ProgressIndicator while processing
+                ProgressHelper.sharedInstance.showFetchLocationLoadingHUD()
+                
+                // Call API
+                self.forecastViewModel.getWeather(city: field.text!).then
+                    { model -> Void in
+                        // Trigger Notification
+                        NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI(_notification:)), name: NSNotification.Name(rawValue: "weatherDataNotified"), object: nil)
+                    }.always
+                    {
+                        // Hide ProgressIndicator after processed
+                        ProgressHelper.sharedInstance.hideFetchLocationLoadingHUD()
+                    }.catch
+                    {
+                        // Catch the error log
+                        (error) in
+                        print(error.localizedDescription)
+                }
+            }
         }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation:CLLocation = locations[0] as CLLocation
         
-        showFetchLocationLoadingHUD()
+        // Popup calcelation
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
         
-        self.forecastViewModel.getWeatherWithCoordinates(lat:Double(userLocation.coordinate.latitude), lon: Double (userLocation.coordinate.longitude))
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.updateUI(_notification:)), name: NSNotification.Name(rawValue: "weatherDataNotified"), object: nil)
-        
-        if startLocation == nil {
-            startLocation = userLocation
-            locationManager.stopUpdatingLocation()
+        // Add Textbox to the controller
+        alertController.addTextField { (textField) in
+            textField.placeholder = "City"
         }
         
+        // Append the actions
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true)
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
-    {
-        print("Error \(error)")
+    @IBAction func tapToGetMoreForecastData(_ sender: Any) {
+        
+        // Show alert popup to proceed fetch five days forecast data
+        let alert = UIAlertController(title: "Alert", message: "Do you want to fetch five days weather data?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+            
+            // Show ProgressIndicator while processing
+            ProgressHelper.sharedInstance.showFetchLocationLoadingHUD()
+            
+            // Call API
+            self.forecastViewModel.getFiveDaysForecastData(city: self.forecastViewModel.WeatherDetails.location).then
+                { model -> Void in
+                    DispatchQueue.main.async {
+                        self.forecastTbl.isHidden = false
+                        self.forecastViewModelList = model
+                        UIView.transition(with: self.forecastTbl, duration: 1.0, options: .transitionCrossDissolve, animations: {self.forecastTbl.reloadData()}, completion: nil)
+                    }
+                }.always
+                {
+                    // Hide ProgressIndicator after processed
+                    ProgressHelper.sharedInstance.hideFetchLocationLoadingHUD()
+                }.catch
+                {
+                    // Catch the error log
+                    (error) in
+                    print(error.localizedDescription)
+            }
+        }))
+        
+        // Append the actions
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
     }
-    
     
 }
 
+extension ForecastViewController {
+    
+    @objc func updateUI(_notification: NSNotification) {
+        DispatchQueue.main.async {
+            
+            self.weatherLocation.text = self.forecastViewModel.WeatherDetails.location
+            self.weatherRate.text = self.forecastViewModel.WeatherDetails.temp
+            self.weatherDesc.text = self.forecastViewModel.WeatherDetails.weather
+            self.weatherDate.text = self.forecastViewModel.WeatherDetails.date
+            self.weatherImg.image = UIImage(named: self.forecastViewModel.WeatherDetails.weatherIcon)
+        }
+    }
+    
+}
