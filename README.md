@@ -6,17 +6,17 @@ This application uses OpenWeatherMap API to fetch the weather forecast records o
 
 Application handled using below apple standards:
 
-Swift 4
-MVVM Design Pattern
-Auto Layout
-Promise Kit
-Location Manager Helper
+1. Swift 4
+2. MVVM Design Pattern
+3. Auto Layout
+4. Promise Kit
+5. Location Manager Helper
 
 Developement Environment:
 
-Xcode Version 9.1
-macOS High Sierra
-and Swift
+1. Xcode Version 9.1
+2. macOS High Sierra
+3. Swift
 
 How to run this application ?
 
